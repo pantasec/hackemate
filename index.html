@@ -1,8 +1,6 @@
-Perfecto. He eliminado completamente la sección de la NASA y la historia de Álvaro. He integrado las nuevas imágenes que me proporcionaste:
-1.  La imagen `ChatGPT Image 8 jun 2026, 20_06_04.png` la he puesto como **foto de perfil del docente HackeMate**.
-2.  La imagen `equipo psd.jpg` la he colocado en la **sección Hero** (la imagen principal que aparece al entrar), y he mejorado el efecto hover para que muestre el texto "LionxSecurity" tal como lo tenías antes.
+He realizado los cambios que me pediste. He eliminado la sección de "De 0 a Analista SOC" y la he sustituido por una nueva sección donde he añadido los enlaces directos a las redes sociales del docente **HackeMate** (Instagram, LinkedIn y YouTube), manteniendo el estilo visual rojo, verde y negro de la página.
 
-Ahora la página refleja correctamente que **LionxSecurity es la academia**, **HackeMate es el docente**, con los colores rojo, verde y negro, y completamente enfocada en la búsqueda de empleo y la agenda de llamadas.
+La landing page ahora está completamente actualizada y lista para usar.
 
 ```html
 <!DOCTYPE html>
@@ -258,7 +256,7 @@ Ahora la página refleja correctamente que **LionxSecurity es la academia**, **H
       color: #dc2626;
     }
 
-    /* PERFIL DOCENTE: HackeMate (con la nueva foto de perfil) */
+    /* PERFIL DOCENTE: HackeMate */
     .teacher-profile-section {
       margin: 30px 0 50px;
     }
@@ -285,7 +283,6 @@ Ahora la página refleja correctamente que **LionxSecurity es la academia**, **H
     .teacher-avatar-large {
       flex-shrink: 0;
     }
-    /* NUEVA FOTO DE PERFIL */
     .teacher-avatar-img {
       width: 130px;
       height: 130px;
@@ -589,61 +586,90 @@ Ahora la página refleja correctamente que **LionxSecurity es la academia**, **H
       margin: 40px 0 10px;
     }
 
-    /* SECCIÓN DE ÉXITO LABORAL (sin NASA, sin Álvaro) */
-    .success-stories {
-      display: flex;
-      gap: 45px;
-      align-items: center;
+    /* NUEVA SECCIÓN: REDES SOCIALES DEL DOCENTE */
+    .teacher-social-feature {
       background: rgba(15,15,15,0.7);
       backdrop-filter: blur(14px);
       border-radius: 50px;
       padding: 50px;
       margin: 40px 0 80px;
-      border: 1.5px solid #dc2626;
-      flex-wrap: wrap;
+      border: 1.5px solid #22c55e;
+      text-align: center;
       transition: all 0.3s;
     }
-    .success-video {
-      flex: 1.2;
-      border-radius: 32px;
-      overflow: hidden;
-      border: 2px solid #22c55e;
+    .teacher-social-feature:hover {
+      border-color: #dc2626;
+      box-shadow: 0 0 25px rgba(220,38,38,0.3);
     }
-    .success-video iframe {
-      width: 100%;
-      height: 380px;
-      display: block;
-    }
-    .success-text-block {
-      flex: 1.3;
-      text-align: center;
-    }
-    .success-text-block h3 {
+    .teacher-social-feature h3 {
       font-size: 2rem;
       font-weight: 800;
       margin-bottom: 20px;
       font-family: 'Plus Jakarta Sans', sans-serif;
+      color: #fff;
     }
-    .success-text-block h3 span {
+    .teacher-social-feature h3 span {
       color: #22c55e;
       border-bottom: 3px solid #dc2626;
       padding-bottom: 6px;
     }
-    .success-text-block p {
+    .teacher-social-feature p {
       color: #cbd5e6;
       font-size: 1.1rem;
-      margin-bottom: 30px;
+      margin-bottom: 35px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
     }
-    .testimonial-icon {
-      width: 70px;
-      height: 70px;
-      background: #dc2626;
-      border-radius: 50%;
+    .social-links-container {
       display: flex;
-      align-items: center;
       justify-content: center;
-      margin: 0 auto 20px;
+      gap: 35px;
+      flex-wrap: wrap;
+    }
+    .social-link-card {
+      background: #1a1a1a;
+      border-radius: 40px;
+      padding: 20px 35px;
+      display: inline-flex;
+      align-items: center;
+      gap: 15px;
+      text-decoration: none;
+      color: white;
+      font-weight: 600;
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+      border: 1px solid #333;
+    }
+    .social-link-card i {
       font-size: 2rem;
+    }
+    .social-link-card.instagram:hover {
+      background: linear-gradient(45deg, #f09433, #d62976, #962fbf);
+      border-color: transparent;
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(214, 41, 118, 0.4);
+    }
+    .social-link-card.linkedin:hover {
+      background: #0077b5;
+      border-color: #0077b5;
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0, 119, 181, 0.4);
+    }
+    .social-link-card.youtube:hover {
+      background: #ff0000;
+      border-color: #ff0000;
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(255, 0, 0, 0.4);
+    }
+    .social-link-card span {
+      font-size: 1.1rem;
+    }
+    @media (max-width: 768px) {
+      .social-link-card { padding: 15px 25px; font-size: 1rem; }
+      .social-link-card i { font-size: 1.6rem; }
+      .teacher-social-feature { padding: 30px 20px; }
+      .teacher-social-feature h3 { font-size: 1.5rem; }
     }
 
     /* RESEÑAS GOOGLE */
@@ -775,8 +801,7 @@ Ahora la página refleja correctamente que **LionxSecurity es la academia**, **H
       .teacher-info-main { text-align: center; }
       .teacher-bio-text { margin-left: auto; margin-right: auto; text-align: left; }
       .teacher-social-buttons { justify-content: center; }
-      .success-stories { flex-direction: column; text-align: center; }
-      .success-video iframe { height: 250px; }
+      .teacher-social-feature { padding: 35px 25px; }
     }
     @media (max-width: 768px) {
       .container { padding: 20px 16px 40px; }
@@ -793,7 +818,8 @@ Ahora la página refleja correctamente que **LionxSecurity es la academia**, **H
       .free-class { padding: 30px 20px; }
       .class-title { font-size: 1.6rem; }
       .trust-badge { padding: 30px 20px; }
-      .success-text-block h3 { font-size: 1.5rem; }
+      .teacher-social-feature h3 { font-size: 1.5rem; }
+      .social-link-card { padding: 12px 20px; gap: 10px; }
     }
   </style>
 </head>
@@ -804,7 +830,7 @@ Ahora la página refleja correctamente que **LionxSecurity es la academia**, **H
     <div class="logo-text">Lionx<span>Security</span></div>
   </div>
 
-  <!-- HERO enfocado empleo + llamada con NUEVA IMAGEN principal -->
+  <!-- HERO enfocado empleo + llamada -->
   <div class="hero">
     <div>
       <h1>Consigue tu <span>primer empleo</span> en ciberseguridad</h1>
@@ -817,7 +843,6 @@ Ahora la página refleja correctamente que **LionxSecurity es la academia**, **H
     </div>
     <a href="#" class="hero-image-wrapper">
       <div class="hero-image">
-        <!-- NUEVA IMAGEN: equipo psd.jpg -->
         <img src="https://raw.githubusercontent.com/pantasec/hackemate/main/equipo%20psd.jpg" alt="LionxSecurity Equipo">
       </div>
       <div class="image-overlay"><span class="overlay-text"><i class="fas fa-shield-alt"></i> LIONXSECURITY <i class="fas fa-code"></i></span></div>
@@ -839,12 +864,11 @@ Ahora la página refleja correctamente que **LionxSecurity es la academia**, **H
     </div>
   </div>
 
-  <!-- PERFIL DOCENTE: HackeMate (con la nueva foto de perfil) -->
+  <!-- PERFIL DOCENTE: HackeMate -->
   <div class="teacher-profile-section">
     <div class="teacher-card">
       <div class="teacher-flex">
         <div class="teacher-avatar-large">
-          <!-- NUEVA FOTO DE PERFIL: ChatGPT Image 8 jun 2026 -->
           <img class="teacher-avatar-img" src="https://raw.githubusercontent.com/pantasec/hackemate/main/ChatGPT%20Image%208%20jun%202026%2C%2020_06_04.png" alt="HackeMate - Docente Ciberseguridad">
         </div>
         <div class="teacher-info-main">
@@ -886,19 +910,23 @@ Ahora la página refleja correctamente que **LionxSecurity es la academia**, **H
     </div>
   </div>
 
-  <!-- CASOS DE ÉXITO LABORAL (Eliminado completamente la referencia a la NASA y Álvaro) -->
-  <div class="success-stories">
-    <div class="success-video">
-      <iframe src="https://www.youtube.com/embed/ZgkOk3FNqU0?rel=0" title="Testimonio empleo ciberseguridad" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    </div>
-    <div class="success-text-block">
-      <div class="testimonial-icon"><i class="fas fa-briefcase"></i></div>
-      <h3><span>De 0 a Analista SOC</span> en solo 4 meses</h3>
-      <p>Nuestros alumnos consiguen empleo gracias a la formación práctica de <strong>HackeMate</strong> y el acompañamiento continuo. Entrevistas, currículum y proyectos reales que marcan la diferencia.</p>
-      <a href="https://cal.com/lionxsecurity-gmg0n1/30min" class="btn-outline"><i class="fas fa-rocket"></i> Quiero mi oportunidad</a>
-    </div>
-    <div class="nasa-card" style="flex:0.9; border-radius: 32px; overflow: hidden; border: 3px solid #dc2626;">
-      <img src="https://raw.githubusercontent.com/pantasec/Links/main/image.webp" alt="Ofertas de empleo ciberseguridad" style="width:100%; display:block;">
+  <!-- NUEVA SECCIÓN: REDES SOCIALES DE HACKEMATE (Reemplaza el antiguo caso de éxito) -->
+  <div class="teacher-social-feature">
+    <h3>Sigue a <span>HackeMate</span> en sus redes</h3>
+    <p>Más contenido diario sobre hacking ético, ofertas de empleo y formación gratuita para que no pares de aprender. ¡Conéctate ahora!</p>
+    <div class="social-links-container">
+      <a href="https://instagram.com/hackemate.pe" target="_blank" class="social-link-card instagram">
+        <i class="fab fa-instagram"></i>
+        <span>@hackemate.pe</span>
+      </a>
+      <a href="https://www.linkedin.com/in/gianpaul-custodio-chavarria/" target="_blank" class="social-link-card linkedin">
+        <i class="fab fa-linkedin-in"></i>
+        <span>LinkedIn Oficial</span>
+      </a>
+      <a href="https://youtube.com/@hackemate?si=I8JQlC1lsE5W4VKK" target="_blank" class="social-link-card youtube">
+        <i class="fab fa-youtube"></i>
+        <span>YouTube @hackemate</span>
+      </a>
     </div>
   </div>
 
