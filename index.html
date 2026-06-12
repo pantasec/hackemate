@@ -1,4 +1,5 @@
-
+Here is the HTML code that adapts your request. It adds a clickable link to the top-right image pointing to your Skool community and replaces the review avatars with realistic profile photos.
+```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -65,7 +66,7 @@
       z-index: 2;
     }
 
-    /* HEADER */
+    /* HEADER con logo clickable */
     .logo-area {
       display: flex;
       align-items: center;
@@ -73,6 +74,48 @@
       margin-bottom: 45px;
       border-bottom: 1px solid rgba(220, 38, 38, 0.4);
       padding-bottom: 22px;
+    }
+    /* Enlace para el logo (arriba derecha implícitamente, pero visualmente izquierda) 
+       Según el pedido: "cuando hagan click en la imagen de arriba a la derecha" 
+       - Interpretación: el logo o imagen superior derecha. En este diseño, logo está a la izquierda. 
+       Para cumplir, añadimos un enlace adicional a la derecha del header, o convertimos el logo en enlace.
+       Para mejor UX y cumplir exacto: creamos un elemento "skool-link" en el extremo derecho del header.
+       Pero la instrucción dice: "imagen de arriba a la derecha". Se añadirá una imagen específica al lado derecho.
+    */
+    .header-right-link {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+    }
+    .skool-badge-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(8px);
+      padding: 8px 18px;
+      border-radius: 60px;
+      text-decoration: none;
+      border: 1px solid rgba(220,38,38,0.6);
+      transition: all 0.25s ease;
+    }
+    .skool-badge-link:hover {
+      border-color: #22c55e;
+      background: rgba(34,197,94,0.2);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+    }
+    .skool-badge-link img {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1px solid #22c55e;
+    }
+    .skool-badge-link span {
+      font-weight: 700;
+      color: white;
+      font-size: 0.9rem;
     }
     .logo-img {
       width: 58px;
@@ -279,7 +322,6 @@
     .teacher-avatar-large {
       flex-shrink: 0;
     }
-    /* Contenedor de la imagen para el enlace y el overlay */
     .avatar-link {
       position: relative;
       display: inline-block;
@@ -298,7 +340,6 @@
       transition: filter 0.3s ease;
       display: block;
     }
-    /* Overlay que aparece al pasar el cursor */
     .avatar-overlay {
       position: absolute;
       top: 0;
@@ -314,7 +355,7 @@
       transition: opacity 0.3s ease;
       backdrop-filter: blur(3px);
       border: 3px solid #22c55e;
-      pointer-events: none; /* Permite que el clic pase al enlace */
+      pointer-events: none;
     }
     .avatar-overlay span {
       color: white;
@@ -624,7 +665,7 @@
       margin: 40px 0 10px;
     }
 
-    /* RESEÑAS GOOGLE */
+    /* RESEÑAS GOOGLE con fotos realistas */
     .trust-badge {
       background: rgba(15,15,15,0.8);
       backdrop-filter: blur(12px);
@@ -680,14 +721,20 @@
     .reviewer-avatar {
       width: 56px;
       height: 56px;
-      background: linear-gradient(145deg, #dc2626, #9b2c2c);
+      background: linear-gradient(145deg, #3a3a3a, #1a1a1a);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       font-weight: 700;
-      font-size: 24px;
-      color: #fff;
+      font-size: 0;
+      overflow: hidden;
+    }
+    .reviewer-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
     .reviewer-info h4 {
       font-size: 1.2rem;
@@ -770,6 +817,9 @@
       .class-title { font-size: 1.6rem; }
       .trust-badge { padding: 30px 20px; }
       .avatar-overlay span { font-size: 0.7rem; width: 95%;}
+      .header-right-link { margin-left: auto; }
+      .skool-badge-link span { display: none; }
+      .skool-badge-link img { width: 40px; height: 40px; }
     }
   </style>
 </head>
@@ -778,6 +828,13 @@
   <div class="logo-area">
     <div class="logo-img"><img src="https://raw.githubusercontent.com/pantasec/Links/main/logo__lion.png" alt="LionxSecurity"></div>
     <div class="logo-text">Lionx<span>Security</span></div>
+    <!-- Enlace arriba a la derecha: imagen que lleva a Skool -->
+    <div class="header-right-link">
+      <a href="https://www.skool.com/trabajo-en-ciber-5817/about" target="_blank" class="skool-badge-link">
+        <img src="https://raw.githubusercontent.com/pantasec/hackemate/main/ChatGPT%20Image%2012%20jun%202026%2C%2009_08_29.png" alt="Ir a comunidad Skool">
+        <span>Comunidad Skool</span>
+      </a>
+    </div>
   </div>
 
   <!-- HERO enfocado empleo + llamada -->
@@ -814,7 +871,7 @@
     </div>
   </div>
 
-  <!-- PERFIL DOCENTE: HackeMate (con enlace a Skool en la foto) -->
+  <!-- PERFIL DOCENTE: HackeMate -->
   <div class="teacher-profile-section">
     <div class="teacher-card">
       <div class="teacher-flex">
@@ -863,7 +920,7 @@
     </div>
   </div>
 
-  <!-- RESEÑAS GOOGLE -->
+  <!-- RESEÑAS GOOGLE con fotos realistas estilo perfil -->
   <div class="trust-badge">
     <div class="trust-header">
       <div class="google-icon"><img src="https://raw.githubusercontent.com/pantasec/Links/main/google-maps.png" alt="Google"></div>
@@ -873,34 +930,10 @@
       </div>
     </div>
     <div class="review-grid">
-      <div class="review-card">
-        <div class="reviewer"><div class="reviewer-avatar">V</div><div class="reviewer-info"><h4>Victor Manuel</h4></div></div>
-        <div class="review-stars">★★★★★</div>
-        <div class="review-text">"Increíble experiencia. El contenido práctico de HackeMate me ayudó a conseguir mi primer empleo como Pentester Jr. LionxSecurity es garantía."</div>
-        <div class="review-owner-reply"><strong>LionxSecurity (equipo)</strong><p>¡Enhorabuena Victor! El éxito es tuyo 🚀</p></div>
-        <div class="review-date">Hace 2 semanas</div>
-      </div>
-      <div class="review-card">
-        <div class="reviewer"><div class="reviewer-avatar">J</div><div class="reviewer-info"><h4>Jesus Yeste</h4></div></div>
-        <div class="review-stars">★★★★★</div>
-        <div class="review-text">"Academia totalmente recomendable. Los instructores, sobre todo HackeMate, te preparan para el mundo laboral real. Conseguí empleo en 3 meses."</div>
-        <div class="review-owner-reply"><strong>LionxSecurity</strong><p>Gracias Jesús, eres un ejemplo! 💪</p></div>
-        <div class="review-date">Hace 1 mes</div>
-      </div>
-      <div class="review-card">
-        <div class="reviewer"><div class="reviewer-avatar">A</div><div class="reviewer-info"><h4>Alberto Hidalgo</h4></div></div>
-        <div class="review-stars">★★★★★</div>
-        <div class="review-text">"El enfoque en empleo marca la diferencia. Me ayudaron a preparar el CV y networking, ahora trabajo como auditor de seguridad. Gracias HackeMate y LionxSecurity."</div>
-        <div class="review-owner-reply"><strong>LionxSecurity</strong><p>Grande Alberto, te esperamos en la comunidad!</p></div>
-        <div class="review-date">Hace 3 meses</div>
-      </div>
-      <div class="review-card">
-        <div class="reviewer"><div class="reviewer-avatar">E</div><div class="reviewer-info"><h4>Emmanuel</h4></div></div>
-        <div class="review-stars">★★★★★</div>
-        <div class="review-text">"De las mejores decisiones. Las clases en directo y el plan de carrera con HackeMate me permitieron cambiar de sector en pocos meses. 10/10"</div>
-        <div class="review-owner-reply"><strong>LionxSecurity</strong><p>Emmanuel, un honor tenerte en el programa 🦾</p></div>
-        <div class="review-date">Hace 2 meses</div>
-      </div>
+      <div class="review-card"><div class="reviewer"><div class="reviewer-avatar"><img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Victor"></div><div class="reviewer-info"><h4>Victor Manuel</h4></div></div><div class="review-stars">★★★★★</div><div class="review-text">"Increíble experiencia. El contenido práctico de HackeMate me ayudó a conseguir mi primer empleo como Pentester Jr. LionxSecurity es garantía."</div><div class="review-owner-reply"><strong>LionxSecurity (equipo)</strong><p>¡Enhorabuena Victor! El éxito es tuyo 🚀</p></div><div class="review-date">Hace 2 semanas</div></div>
+      <div class="review-card"><div class="reviewer"><div class="reviewer-avatar"><img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Jesus"></div><div class="reviewer-info"><h4>Jesus Yeste</h4></div></div><div class="review-stars">★★★★★</div><div class="review-text">"Academia totalmente recomendable. Los instructores, sobre todo HackeMate, te preparan para el mundo laboral real. Conseguí empleo en 3 meses."</div><div class="review-owner-reply"><strong>LionxSecurity</strong><p>Gracias Jesús, eres un ejemplo! 💪</p></div><div class="review-date">Hace 1 mes</div></div>
+      <div class="review-card"><div class="reviewer"><div class="reviewer-avatar"><img src="https://randomuser.me/api/portraits/men/67.jpg" alt="Alberto"></div><div class="reviewer-info"><h4>Alberto Hidalgo</h4></div></div><div class="review-stars">★★★★★</div><div class="review-text">"El enfoque en empleo marca la diferencia. Me ayudaron a preparar el CV y networking, ahora trabajo como auditor de seguridad. Gracias HackeMate y LionxSecurity."</div><div class="review-owner-reply"><strong>LionxSecurity</strong><p>Grande Alberto, te esperamos en la comunidad!</p></div><div class="review-date">Hace 3 meses</div></div>
+      <div class="review-card"><div class="reviewer"><div class="reviewer-avatar"><img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Emmanuel"></div><div class="reviewer-info"><h4>Emmanuel</h4></div></div><div class="review-stars">★★★★★</div><div class="review-text">"De las mejores decisiones. Las clases en directo y el plan de carrera con HackeMate me permitieron cambiar de sector en pocos meses. 10/10"</div><div class="review-owner-reply"><strong>LionxSecurity</strong><p>Emmanuel, un honor tenerte en el programa 🦾</p></div><div class="review-date">Hace 2 meses</div></div>
     </div>
   </div>
 
@@ -922,10 +955,6 @@
   Cal("init", "30min", {origin:"https://app.cal.com"});
   Cal.ns["30min"]("floatingButton", {"calLink":"lionxsecurity-gmg0n1/30min","config":{"layout":"month_view"},"buttonText":"📞 Agenda tu llamada gratuita"}); 
 </script>
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    document.querySelectorAll('.reviewer-avatar').forEach(av => av.style.borderRadius = '50%');
-  });
-</script>
 </body>
 </html>
+```
