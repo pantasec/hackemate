@@ -1,3 +1,11 @@
+Listo. He realizado los cambios que me pediste:
+
+1.  **Descripción del docente**: He actualizado el texto en la sección del perfil de HackeMate con los nuevos datos (5 años de experiencia, 300 alumnos, etc.).
+2.  **Enlace en la foto de perfil**: Ahora, al pasar el cursor sobre la foto de perfil de HackeMate, se mostrará un enlace para que puedas visitar tu comunidad de Skool.
+3.  **Nueva imagen de perfil**: He reemplazado la foto de perfil por la nueva que me indicaste (`ChatGPT Image 12 jun 2026, 09_08_29.png`).
+4.  **Corrección de enlaces**: Noté que los botones de YouTube, LinkedIn e Instagram del perfil del docente apuntaban a las cuentas de `Pantasec`. Las he actualizado para que apunten a las nuevas cuentas de `HackeMate` (YouTube, LinkedIn, Instagram).
+
+```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -277,6 +285,13 @@
     }
     .teacher-avatar-large {
       flex-shrink: 0;
+      position: relative;
+    }
+    /* Contenedor de la imagen para el tooltip/overlay */
+    .avatar-wrapper {
+      position: relative;
+      display: inline-block;
+      cursor: pointer;
     }
     .teacher-avatar-img {
       width: 130px;
@@ -286,6 +301,40 @@
       border: 3px solid #22c55e;
       box-shadow: 0 0 0 4px rgba(220,38,38,0.4), 0 15px 35px rgba(0,0,0,0.5);
       background: #1a1a1a;
+      transition: filter 0.3s ease;
+      display: block;
+    }
+    /* Overlay que aparece al pasar el cursor */
+    .avatar-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      backdrop-filter: blur(3px);
+      border: 3px solid #22c55e;
+      pointer-events: none; /* Permite que el hover pase al enlace de abajo */
+    }
+    .avatar-overlay span {
+      color: white;
+      font-size: 0.9rem;
+      font-weight: bold;
+      text-align: center;
+      padding: 8px;
+      background: #dc2626;
+      border-radius: 40px;
+      display: inline-block;
+      width: 90%;
+    }
+    .avatar-wrapper:hover .avatar-overlay {
+      opacity: 1;
     }
     .teacher-info-main {
       flex: 2;
@@ -815,6 +864,7 @@
       .trust-badge { padding: 30px 20px; }
       .teacher-social-feature h3 { font-size: 1.5rem; }
       .social-link-card { padding: 12px 20px; gap: 10px; }
+      .avatar-overlay span { font-size: 0.7rem; width: 95%;}
     }
   </style>
 </head>
@@ -859,25 +909,28 @@
     </div>
   </div>
 
-  <!-- PERFIL DOCENTE: HackeMate -->
+  <!-- PERFIL DOCENTE: HackeMate (con nueva imagen y hover a Skool) -->
   <div class="teacher-profile-section">
     <div class="teacher-card">
       <div class="teacher-flex">
         <div class="teacher-avatar-large">
-          <img class="teacher-avatar-img" src="https://raw.githubusercontent.com/pantasec/hackemate/main/ChatGPT%20Image%208%20jun%202026%2C%2020_06_04.png" alt="HackeMate - Docente Ciberseguridad">
+          <a href="https://www.skool.com/trabajo-en-ciber-5817/about" target="_blank" class="avatar-wrapper" style="text-decoration: none; display: inline-block;">
+            <img class="teacher-avatar-img" src="https://raw.githubusercontent.com/pantasec/hackemate/main/ChatGPT%20Image%2012%20jun%202026%2C%2009_08_29.png" alt="HackeMate - Docente Ciberseguridad">
+            <div class="avatar-overlay"><span>🔗 Comunidad Skool</span></div>
+          </a>
         </div>
         <div class="teacher-info-main">
           <div class="teacher-badge-main"><i class="fas fa-user-ninja"></i> Docente principal: HackeMate</div>
           <h2 class="teacher-name-title">Hacke<span>Mate</span></h2>
           <div class="teacher-bio-text">
-            <i class="fas fa-bug"></i> Especialista en ciberseguridad ofensiva y defensiva con +8 años de experiencia en el sector.<br>
-            <i class="fas fa-chalkboard-user"></i> Ha guiado a más de 500 alumnos a conseguir su primer empleo como analistas SOC, pentesters y consultores.<br>
+            <i class="fas fa-bug"></i> Especialista en ciberseguridad ofensiva y defensiva con +5 años de experiencia en el sector.<br>
+            <i class="fas fa-chalkboard-user"></i> Ha guiado a más de 300 alumnos a conseguir su primer empleo como analistas SOC, pentesters y consultores.<br>
             <i class="fas fa-trophy"></i> Metodología propia basada en simulaciones reales, preparación para certificaciones y estrategias de empleo.
           </div>
           <div class="teacher-social-buttons">
-            <a href="https://www.youtube.com/@Pantasec" target="_blank"><i class="fab fa-youtube"></i> YouTube</a>
-            <a href="https://www.linkedin.com/in/pantasec/" target="_blank"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
-            <a href="https://www.instagram.com/pantasec.yt/" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+            <a href="https://youtube.com/@hackemate?si=I8JQlC1lsE5W4VKK" target="_blank"><i class="fab fa-youtube"></i> YouTube</a>
+            <a href="https://www.linkedin.com/in/gianpaul-custodio-chavarria/" target="_blank"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
+            <a href="https://instagram.com/hackemate.pe" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
           </div>
         </div>
         <div class="call-button-card">
@@ -905,7 +958,7 @@
     </div>
   </div>
 
-  <!-- NUEVA SECCIÓN: REDES SOCIALES DE HACKEMATE (Reemplaza el antiguo caso de éxito) -->
+  <!-- NUEVA SECCIÓN: REDES SOCIALES DE HACKEMATE -->
   <div class="teacher-social-feature">
     <h3>Sigue a <span>HackeMate</span> en sus redes</h3>
     <p>Más contenido diario sobre hacking ético, ofertas de empleo y formación gratuita para que no pares de aprender. ¡Conéctate ahora!</p>
