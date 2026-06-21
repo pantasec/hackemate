@@ -1,6 +1,3 @@
-Entendido. He eliminado la imagen grande de la derecha del héroe y he colocado la imagen `hackelion.png` en el enlace de la esquina superior derecha que lleva a Skool, manteniendo el resto de la página igual.
-
-```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -834,8 +831,8 @@ Entendido. He eliminado la imagen grande de la derecha del héroe y he colocado 
     </div>
   </div>
 
-  <!-- HERO enfocado empleo + llamada (IMAGEN GRANDE ELIMINADA) -->
-  <div class="hero" style="grid-template-columns: 1fr;">
+  <!-- HERO enfocado empleo + llamada -->
+  <div class="hero">
     <div>
       <h1>Consigue tu <span>primer empleo</span> en ciberseguridad</h1>
       <p>Sin experiencia previa. Te guiamos paso a paso con <strong style="color:#22c55e;">HackeMate</strong>, nuestro docente en activo. Metodología directa al mercado laboral.</p>
@@ -845,7 +842,13 @@ Entendido. He eliminado la imagen grande de la derecha del héroe y he colocado 
       </div>
       <div class="highlight-box"><p><strong>🔥 +3.5M de empleos sin cubrir en ciberseguridad.</strong> Empresas como Indra, Telefónica, bancos y startups te están buscando. Da el salto.</p></div>
     </div>
-    <!-- La imagen del héroe y su overlay han sido eliminadas -->
+    <!-- IMPORTANTE: Ahora la imagen del héroe con su overlay es un link funcional a Skool -->
+    <a href="https://www.skool.com/trabajo-en-ciber-5817/about" target="_blank" class="hero-image-wrapper">
+      <div class="hero-image">
+        <img src="https://raw.githubusercontent.com/pantasec/hackemate/main/equipo%20psd.jpg" alt="LionxSecurity Equipo">
+      </div>
+      <div class="image-overlay"><span class="overlay-text"><i class="fas fa-shield-alt"></i> LIONXSECURITY <i class="fas fa-code"></i></span></div>
+    </a>
   </div>
 
   <!-- COMUNIDAD + REDES -->
@@ -950,4 +953,3 @@ Entendido. He eliminado la imagen grande de la derecha del héroe y he colocado 
 </script>
 </body>
 </html>
-```
